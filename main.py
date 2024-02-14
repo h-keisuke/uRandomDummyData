@@ -1,15 +1,17 @@
 import sys
 import generate_dummy_data
 
+
 def main(args):
     if len(args) > 1 and args[1].isdigit():
-        loopNum = int(args[1])
+        loop_num = int(args[1])
     else:
-        loopNum = 10
+        loop_num = 10
 
-    for _ in range(loopNum):
+    for _ in range(loop_num):
         generated = generate_dummy_data.generate()
         print(generated)
+
 
 ##
 if __name__ == '__main__':

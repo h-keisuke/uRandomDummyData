@@ -4,6 +4,7 @@ from typing import Optional, Tuple
 from faker import Faker
 import pykakasi
 
+
 def generate():
     fake = Faker("ja_JP")
     kakashi = pykakasi.kakasi()
@@ -41,7 +42,7 @@ def generate():
     ]
 
 
-def parse_address(address: str) -> Tuple[Optional[str],Optional[str],Optional[str],Optional[str]] :
+def parse_address(address: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     match = re.match(r'([^都道府県]*[都道府県])([^市区町村]*[市区町村])(.*)', address)
     if match:
         [address1, address2, address3] = match.groups()
