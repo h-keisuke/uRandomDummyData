@@ -17,18 +17,20 @@
 
 ### 必要なもの
 
-このアプリケーションを動作させるにはPython 3.9.13が必要です。また、このアプリケーションは 'Faker' と 'pykakasi' のパッケージを使用しています。
+予め、`pyenv` と `pipenv` をインストールして使えるようにしといてください。
 
-これらは pip でインストールできます：
+次に以下のコマンドを実行してpythonのバージョンと必要なライブラリをインストールします。
 
 ```shell
-pip install -r requirements.txt
+cd $project_top_dir
+pipenv --python $(pyenv which python)
+pipenv install --ignore-pipfile 
 ```
 
 ## スクリプトの実行
 
 ```shell
-python main.py
+pipenv run python main.py
 ```
 
 これにより、上記のフィールドのランダムなダミーデータの配列が作成されます。
@@ -36,7 +38,7 @@ python main.py
 スクリプトの実行時に数字を指定すると出力するデータ数を指定できます。指定しなかった場合のデフォルト値は10です
 
 ```shell
-python main.py 20
+pipenv run python main.py 20
 ```
 
 ## 連絡
