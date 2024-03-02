@@ -1,20 +1,41 @@
 import re
 from typing import Optional, Tuple
-
 from faker import Faker
 import pykakasi
+from dataclasses import dataclass
 
 
-def generate():
+@dataclass
+class DummyData:
+    family_name_kanji: str
+    first_name_kanji: str
+    family_name_kana: str
+    first_name_kana: str
+    postal_code_1: int
+    postal_code_2: int
+    address_1: str
+    address_2: str
+    address_3: str
+    address_4: str
+    phone_1: str
+    phone_2: str
+    phone_3: str
+    birth_date: str
+
+
+def generate() -> DummyData:
     fake = Faker("ja_JP")
     kakashi = pykakasi.kakasi()
 
     name_kanji = fake.name()
+    [family_name_kanji, first_name_kanji] = name_kanji.split(' ')
 
     converted = kakashi.convert(name_kanji)
     name_katakana = ''.join(map(lambda x: x['kana'], converted))
+    [family_name_kana, first_name_kana] = name_katakana.split(' ')
 
-    postalCode = fake.zipcode()
+    postal_code = fake.zipcode()
+    [postal_code_1, postal_code_2] = postal_code.split('-')
 
     address = fake.address()
 
@@ -26,20 +47,26 @@ def generate():
     address4 = split_address[3] if split_address[3] is not None else ''
 
     phone = fake.phone_number()
+    [phone_1, phone_2, phone_3] = phone.split('-')
 
     birth_date = fake.date_of_birth(minimum_age=18, maximum_age=100).strftime('%Y-%m-%d')
 
-    return [
-        name_kanji,
-        name_katakana,
-        postalCode,
+    return DummyData(
+        family_name_kanji,
+        first_name_kanji,
+        family_name_kana,
+        first_name_kana,
+        postal_code_1,
+        postal_code_2,
         address1,
         address2,
         address3,
         address4,
-        phone,
+        phone_1,
+        phone_2,
+        phone_3,
         birth_date
-    ]
+    )
 
 
 def parse_address(address: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:

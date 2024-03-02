@@ -1,10 +1,12 @@
-# uRandomDummyData
+# u_random_dummy_data
 
 これは様々なフィールドのランダムダミーデータを生成するためのPythonアプリケーションです。
 
 このアプリケーションでは以下のダミーデータを生成します：
 
+- 名字（漢字）
 - 名前（漢字）
+- 名字（カタカナ）
 - 名前（カタカナ）
 - 郵便番号
 - 住所1
@@ -15,33 +17,34 @@
 
 ## 使い方
 
-### 必要なもの
+### How to Use (from Distoribution)
 
-予め、`pyenv` と `pipenv` をインストールして使えるようにしといてください。
-
-次に以下のコマンドを実行してpythonのバージョンと必要なライブラリをインストールします。
-
+1. First, install distoribution package
 ```shell
-cd $project_top_dir
-pipenv --python $(pyenv which python)
-pipenv install --ignore-pipfile 
+pip install u_random_dummy_data
+```
+2. Next, run script
+```shell
+u_random
 ```
 
-## スクリプトの実行
+### How to Use (from Source file)
 
+1. First, Install [Rye](https://rye-up.com/)
+2. Next, run script
 ```shell
-pipenv run python main.py
+rye sync
+rye run u_random
 ```
 
-これにより、上記のフィールドのランダムなダミーデータの配列が作成されます。
+これにより、ランダムなダミーデータの配列が作成されます。
 
-スクリプトの実行時に数字を指定すると出力するデータ数を指定できます。指定しなかった場合のデフォルト値は10です
+#### Options
 
-```shell
-pipenv run python main.py 20
-```
+- `-u N` N個のダミーデータを作成します。デフォルト:1
+- `-f [csv|tsv|json|yaml|scala]` 出力フォーマットの指定。デフォルト:csv
 
 ## 連絡
 
 何か疑問点がある場合は issue を作成してください。
-気が向いたら見ます
+気が向いたら見ます。
