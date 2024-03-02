@@ -34,3 +34,7 @@ allow-direct-references = true
 [tool.hatch.build.targets.wheel]
 packages = ["src/u_random_dummy_data"]
 
+[project.urls]
+Repository = "https://github.com/h-keisuke/uRandomDummyData"
+Issues = "https://github.com/h-keisuke/uRandomDummyData/issues"
+
